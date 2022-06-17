@@ -13,7 +13,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int selectedColor = 0;
-  List<Color> _colorList = [
+
+  List<Color> colorList = [
     Colors.indigo,
     Colors.blue,
     Colors.lightBlueAccent,
@@ -22,6 +23,8 @@ class _HomeState extends State<Home> {
     Colors.orange,
     Colors.red,
   ];
+
+//FUNCTION
 
   void _changeColorIndex(index) {
     setState(() {
@@ -39,7 +42,7 @@ class _HomeState extends State<Home> {
       body: AnimatedContainer(
         duration: Duration(seconds: 1),
         curve: Curves.fastLinearToSlowEaseIn,
-        color: _colorList[selectedColor],
+        color: colorList[selectedColor],
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -56,12 +59,12 @@ class _HomeState extends State<Home> {
                 child: ListView(
                     padding: EdgeInsets.symmetric(horizontal: 32.0),
                     scrollDirection: Axis.horizontal,
-                    children: List.generate(_colorList.length, (index) {
+                    children: List.generate(colorList.length, (index) {
                       return GestureDetector(
                           onTap: () {
                             _changeColorIndex(index);
                           },
-                          child: colorBox(_colorList[index], selectedColor == index));
+                          child: colorBox(colorList[index], selectedColor == index));
                     })))
           ],
         ),
